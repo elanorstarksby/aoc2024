@@ -1,22 +1,28 @@
 def read_in():
     with open("input.txt", "r") as input_file:
-        values = [[],[]]
+        values = [{}, []]
         line = input_file.readline().strip()
         while not line == "":
-            values[0].append(tuple(int(a) for a in line.split("|")))
+            x,y = tuple(int(a) for a in line.split("|"))
+            if x not in values[0]:
+                values[0][x] = []
+            print(values[0][x])
+            values[0][x] = values[0][x].append(y)
             line = input_file.readline().strip()
         line = input_file.readline()
         while not line == "":
-            values[1].append([int(a) for a  in line.split(",")])
+            values[1].append([int(a) for a in line.split(",")])
             line = input_file.readline().strip()
     return values
 
+
 def follows_rules(i, update, rules):
-    for j in range(i+1, len(update)):
+    for j in range(i + 1, len(update)):
         for r in rules:
             if update[i] == r[1] and update[j] == r[0]:
                 return False, j
     return True, -1
+
 
 def valid_update(update, rules):
     for i in range(0, len(update)):
@@ -24,7 +30,6 @@ def valid_update(update, rules):
         if not f:
             return False, i, j
     return True, -1, -1
-
 
 
 def p1(values):
@@ -35,10 +40,11 @@ def p1(values):
     for ui, u in enumerate(updates):
         valid, _, _ = valid_update(u, rules)
         if valid:
-            p1_total += u[(len(u))//2]
+            p1_total += u[(len(u)) // 2]
         else:
             invalid_i.append(ui)
     return p1_total, invalid_i
+
 
 def reorder(update, rules):
     valid, i, j = valid_update(update, rules)
@@ -46,6 +52,7 @@ def reorder(update, rules):
         valid, i, j = valid_update(update, rules)
         update[i], update[j] = update[j], update[i]
     return update
+
 
 def p2(values, invalid):
     updates = values[1]
@@ -59,6 +66,7 @@ def p2(values, invalid):
 
 def main():
     values = read_in()
+    print(values)
     p1_result, invalid = p1(values)
     print(p1_result)
     print(p2(values, invalid))

@@ -49,29 +49,6 @@ def p1(grid):
     return p1_total
 
 
-#
-# def is_corner(region, r, c):
-#     directions = set()
-#     for dr, dc in ((0, 1), (0, -1), (1, 0), (-1, 0)):
-#         if (r + dr, c + dc) in region:
-#             directions.add((dr, dc))
-#     if len(directions) == 1:
-#         return True
-#     if len(directions) == 3:
-#         return False
-
-#
-# def get_next_direction(region, location, came_from):
-#     for dr, dc in ((0, 1), (0, -1), (1, 0), (-1, 0)):
-#         pass
-#
-#
-# def calculate_lines_total(region):
-#     if len(region) == 1:
-#         return 4
-#     corner = min(region)
-#     next_direction = get_next_direction(region, corner, (-1, -1))
-
 def visit_2(grid, r, c, region, visited, directions):
     visited.add((r, c))
     region.add((r, c))

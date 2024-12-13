@@ -44,24 +44,6 @@ def p2(games):
                 return -1
             p2_total += int(str(m[a])) * 3 + int(str(m[b]))
 
-    # for game in games:
-    #     print(game)
-    #     min_tokens = 600
-    #     found_solution = False
-    #     a = 0
-    #     after_a = (0,0)
-    #     while after_a[0] < (game[4] + 10000000000000):
-    #         if a % 10000000 == 0:
-    #             print(a)
-    #         after_a = (a * game[0], a * game[1])
-    #         b = ((game[4] + 10000000000000) - after_a[0]) / game[2]
-    #         if b % 1 == 0 and after_a[1] + (game[3] * b) == (game[5] + 10000000000000):
-    #             if 3 * a + b < min_tokens:
-    #                 min_tokens = 3 * a + (b // 1)
-    #                 found_solution = True
-    #         a += 1
-    #     if found_solution:
-    #         p2_total += min_tokens
     return p2_total
 
 

@@ -59,18 +59,32 @@ def p2(robots):
         if search_n(grid, 7):
             print(i)
             for row in grid:
-                print("".join(["." if r==0 else "@" for r in row]))
+                print("".join(["." if r == 0 else "@" for r in row]))
             print()
             break
 
     return 0
 
 
+def p2_levels(robots):
+    average = p1(robots, 0)
+    i = 0
+    possible = []
+    while True:
+        i += 1
+        level = p1(robots, i)
+        if level < 0.3 * average:
+            possible.append((i, level))
+            print(possible)
+        average = (i * average + level) / (i + 1)
+
+
 def main():
     values = read_in()
     print(values)
     print(p1(values, 100))
-    print(p2(values))
+    # print(p2(values))
+    print(p2_levels(values))
 
 
 if __name__ == '__main__':

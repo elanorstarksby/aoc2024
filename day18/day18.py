@@ -1,5 +1,3 @@
-
-
 def read_in():
     with open("input.txt", "r") as input_file:
         lines = [tuple([int(b) for b in a.strip().split(",")]) for a in input_file]
@@ -21,7 +19,6 @@ def search(blocked, visited, bounds, to_visit):
 
 def p1(values, bounds, first_amount):
     first_section = values[:first_amount]
-
     return search(first_section, set(), bounds, [(0,(0,0))])
 
 
